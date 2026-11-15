@@ -1,0 +1,55 @@
+{
+  "_readme": "Edit this file, then run `npm run build` (or just push: the deploy does it). Every field is explained in README.md. Any key starting with _ is a note and is ignored.",
+
+  "releases": [
+    { "title": "Rasatal",     "bengali": "রসাতল",    "type": "Album",  "year": 2026, "spotify": "", "cover": "" },
+    { "title": "Chita",       "bengali": "চিতা",      "type": "Single", "year": 2026, "spotify": "", "cover": "" },
+    { "title": "Rokto Tilak", "bengali": "রক্ত তিলক", "type": "Single", "year": 2025, "spotify": "", "cover": "" },
+    { "title": "Amabasya",    "bengali": "অমাবস্যা",  "type": "EP",     "year": 2025, "spotify": "", "cover": "" },
+    { "title": "Shmashan",    "bengali": "শ্মশান",    "type": "Single", "year": 2024, "spotify": "", "cover": "" },
+    { "title": "Bhogavati",   "bengali": "ভোগবতী",   "type": "EP",     "year": 2024, "spotify": "", "cover": "" }
+  ],
+
+  "collaborators": [
+    { "name": "Nishi",      "role": "Voice",                "on": "Rasatal",     "year": 2026, "url": "" },
+    { "name": "Dhaak Ghor", "role": "Dhaak and percussion", "on": "Chita",       "year": 2026, "url": "" },
+    { "name": "Aleya",      "role": "Synths and noise",     "on": "Rokto Tilak", "year": 2025, "url": "" },
+    { "name": "Kansa",      "role": "Bell metal, gongs",    "on": "Amabasya",    "year": 2025, "url": "" },
+    { "name": "Mohona",     "role": "Strings",              "on": "Shmashan",    "year": 2024, "url": "" },
+    { "name": "Shob Jatra", "role": "Choir",                "on": "Bhogavati",   "year": 2024, "url": "" }
+  ],
+
+  "onRepeat": [
+    { "artist": "The Weeknd",     "title": "Blinding Lights",  "length": "3:20", "spotify": "https://open.spotify.com/track/0VjIjW4GlUZAMYd2vXMi3b" },
+    { "artist": "Billie Eilish",  "title": "bad guy",          "length": "3:14", "spotify": "https://open.spotify.com/track/2Fxmhks0bxGSBdJ92vM42m" },
+    { "artist": "Dua Lipa",       "title": "Levitating",       "length": "3:23", "spotify": "https://open.spotify.com/track/463CkQjx2Zk1yXoBuierM9" },
+    { "artist": "Harry Styles",   "title": "As It Was",        "length": "2:47", "spotify": "https://open.spotify.com/track/4LRPiXqCikLlN15c3yImP7" },
+    { "artist": "SZA",            "title": "Kill Bill",        "length": "2:33", "spotify": "https://open.spotify.com/track/3OHfY25tqY28d16oZczHc8" },
+    { "artist": "Post Malone",    "title": "Circles",          "length": "3:35", "spotify": "https://open.spotify.com/track/21jGcNKet2qwijlDFuPiPb" },
+    { "artist": "Drake",          "title": "God's Plan",       "length": "3:19", "spotify": "https://open.spotify.com/track/6DCZcSspjsKoFjzjrWoCdn" },
+    { "artist": "Taylor Swift",   "title": "Anti-Hero",        "length": "3:20", "spotify": "https://open.spotify.com/track/0V3wPSX9ygBnCm8psDIegu" },
+    { "artist": "Bad Bunny",      "title": "Tití Me Preguntó", "length": "4:03", "spotify": "https://open.spotify.com/track/1IHWl5LamUGEuP4ozKQSXZ" },
+    { "artist": "Olivia Rodrigo", "title": "drivers license",  "length": "4:02", "spotify": "https://open.spotify.com/track/5wANPM4fQCJwkGd4rN57mH" },
+    { "artist": "Doja Cat",       "title": "Say So",           "length": "3:57", "spotify": "https://open.spotify.com/track/3Dv1eDb0MEgF93GpLXlucZ" },
+    { "artist": "Miley Cyrus",    "title": "Flowers",          "length": "3:20", "spotify": "https://open.spotify.com/track/0yLdNVWF3Srea0uzk55zFn" },
+    { "artist": "Arctic Monkeys", "title": "Do I Wanna Know?", "length": "4:32", "spotify": "https://open.spotify.com/track/5FVd6KXrgO9B3JPmC8OPst" },
+    { "artist": "Ed Sheeran",     "title": "Shape of You",     "length": "3:53", "spotify": "https://open.spotify.com/track/7qiZfU4dY1lWllzX7mPBI3" }
+  ],
+
+  "contact": {
+    "email": "hello@example.com",
+    "links": [
+      { "label": "Spotify",   "url": "" },
+      { "label": "YouTube",   "url": "" },
+      { "label": "Bandcamp",  "url": "" },
+      { "label": "Instagram", "url": "" }
+    ]
+  },
+
+  "portrait": "",
+
+  "tunnel": {
+    "tint": "#E0321F",
+    "max": 60
+  }
+}

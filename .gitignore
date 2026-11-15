@@ -1,6 +1,6 @@
 node_modules/
 .idea/
 
-# generated from the images in site/art (the deploy workflow rebuilds both)
-site/art/manifest.js
-site/art/_tunnel/
+# made by `npm run build`; the deploy workflow makes its own
+dist/
+.cache/
