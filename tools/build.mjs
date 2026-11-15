@@ -333,7 +333,7 @@ function renderStructuredData(contact, hasShare) {
     name: "Pataal Yatri",
     alternateName: ALSO_KNOWN_AS,
     url: SITE,
-    description: "Pataal Yatri (পাতাল যাত্রী), the one who travels the underworld. Down, in search of the root.",
+    description: "Pataal Yatri (পাতাল যাত্রী), the one who travels the underworld. Down to the root.",
     foundingLocation: { "@type": "Place", name: "Bengal" }
   };
   if (hasShare) artist.image = SITE + "assets/icons/share.jpg";
