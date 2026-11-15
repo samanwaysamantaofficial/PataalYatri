@@ -238,11 +238,14 @@ main{overflow-x:clip;}
 }
 /* the Hindi name mirrors the Bengali: one above the English, one below.
    Both scripts and the name are sized by height so the hero buttons stay above the fold. */
-/* Devanagari's headline and taller letter bodies read heavier and larger than Bengali at the
-   same settings, so the Hindi is set 12% smaller and wider, to match the Bengali's length and weight by eye */
+/* The Hindi is sized so its letters are exactly as tall and as long as the Bengali's.
+   Measured in pixels: at the same font size Devanagari's ink is 90/102 as tall, so it is set
+   1.133x larger, then narrowed to 76% width to match the Bengali's length (416 vs 417 px at 100px).
+   line-height is divided by the same factor so the line takes the same room as the Bengali's. */
 .hero-hi{
   margin:clamp(8px,1.4vh,16px) 0 0;
-  font-weight:700;font-stretch:96%;font-size:clamp(1.67rem,min(7.04vw,5.63vh),3.17rem);
+  font-weight:700;font-stretch:76%;
+  font-size:calc(clamp(1.9rem,min(8vw,6.4vh),3.6rem) * 1.133);line-height:1.103;
 }
 .name{
   will-change:transform,opacity;transform-origin:0% 50%;
