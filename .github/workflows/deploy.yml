@@ -1,11 +1,11 @@
 name: Deploy site
 
-# Every push to main: list the art, shrink it for the tunnel, publish site/.
+# Every push to master: build dist/ from content.json, art/ and src/, then publish it.
 # One-time setup: repo Settings > Pages > Source = "GitHub Actions".
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   workflow_dispatch:
 
 permissions:
@@ -27,20 +27,21 @@ jobs:
         with:
           node-version: 24
 
-      # sharp makes the small tunnel copies. If the install fails the build
-      # still succeeds and the tunnel loads the originals instead.
+      # sharp shrinks the art. If the install fails the build still
+      # succeeds and the originals are published instead.
       - name: Install image tools
         run: npm install --no-audit --no-fund --no-package-lock
         continue-on-error: true
 
-      - name: List the art and make small copies
-        run: node tools/build-art.mjs
+      # Stops here, with the reason in the log, if content.json has a mistake.
+      - name: Build the site
+        run: node tools/build.mjs
 
       - uses: actions/configure-pages@v6
 
       - uses: actions/upload-pages-artifact@v5
         with:
-          path: site
+          path: dist
 
   deploy:
     needs: build

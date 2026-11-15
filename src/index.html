@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<!--
+  This is the TEMPLATE for the page, not the page itself.
+  `npm run build` fills each "build:" marker from content.json, drops each
+  "if:" block whose list in content.json is empty, and writes the finished
+  page to dist/index.html.
+-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pataal Yatri | Unfiltered, unhinged and authentic</title>
+<meta name="description" content="Pataal Yatri (পাতাল যাত্রী), the one who travels the underworld. Unfiltered, unhinged and authentic.">
+<meta name="theme-color" content="#0B0605">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pataal Yatri">
+<meta property="og:title" content="Pataal Yatri">
+<meta property="og:description" content="Unfiltered, unhinged and authentic.">
+<link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/site.css">
+<noscript><style>.load{display:none}.bar{transform:none}.fade{opacity:1;transform:none}.rvi{transform:none}</style></noscript>
+</head>
+<body>
+
+<canvas id="tunnel" aria-hidden="true"></canvas>
+<div class="scrim" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="rail" aria-hidden="true"><i id="railFill"></i></div>
+
+<div class="load" id="load">
+  <div class="load-in">
+    <p class="load-word" id="loadWord">Pataal Yatri</p>
+    <div class="load-track"><i id="loadBar"></i></div>
+    <div class="load-meta"><span id="loadLab">Loading</span><b id="loadNum">000</b></div>
+  </div>
+</div>
+
+<header class="bar" id="bar">
+  <a class="bar-id" href="#s00">Pataal Yatri</a>
+  <nav class="bar-nav" aria-label="Sections">
+    <!-- if:releases --><a href="#s01">Releases</a><!-- endif:releases -->
+    <!-- if:onRepeat --><a href="#s02">On repeat</a><!-- endif:onRepeat -->
+    <!-- if:collaborators --><a href="#s03">Collaborators</a><!-- endif:collaborators -->
+    <a href="#s04">About</a>
+  </nav>
+  <a class="bar-cta" href="#s05">Contact</a>
+  <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i><span>Menu</span></button>
+</header>
+
+<nav class="menu" id="menu" aria-label="Sections">
+  <!-- if:releases --><a href="#s01">Releases <small lang="bn">১</small></a><!-- endif:releases -->
+  <!-- if:onRepeat --><a href="#s02">On repeat <small lang="bn">২</small></a><!-- endif:onRepeat -->
+  <!-- if:collaborators --><a href="#s03">Collaborators <small lang="bn">৪</small></a><!-- endif:collaborators -->
+  <a href="#s04">About <small lang="bn">৫</small></a>
+  <a href="#s05">Contact <small lang="bn">৬</small></a>
+</nav>
+
+<main>
+
+  <section class="sect hero" id="s00">
+    <div>
+      <p class="hero-bn fade" lang="bn" aria-hidden="true">পাতাল যাত্রী</p>
+      <h1 class="name" id="name" aria-label="Pataal Yatri">
+        <span class="rv"><span class="rvi">Pataal</span></span>
+        <span class="rv"><span class="rvi">Yatri</span></span>
+      </h1>
+      <p class="slogan fade d1" id="slogan">Unfiltered, unhinged and authentic.</p>
+    </div>
+    <div class="hero-foot">
+      <p class="lede fade d2">Pataal is the lowest of the seven realms beneath the earth. Pataal Yatri goes down there for the music: flame, blood, the dead, and every civilization buried on the way. <em>Nothing is cleaned up for daylight.</em></p>
+      <div class="hero-side fade d3">
+        <div class="srow"><span>Now</span><b class="live">Descending</b></div>
+        <!-- if:latest --><div class="srow"><span>Latest</span><b><!-- build:latest --></b></div><!-- endif:latest -->
+        <div class="srow"><span>From</span><b>Bengal</b></div>
+        <div class="acts">
+          <!-- if:releases --><a class="btn solid" href="#s01"><i></i><span>Hear the releases</span></a><!-- endif:releases -->
+          <a class="btn" href="#s04"><i></i><span>About the artist</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- if:releases -->
+  <section class="sect" id="s01">
+    <div class="head fade"><span class="ix" lang="bn">১</span><span class="ti">Releases</span><span class="ex"><span lang="bn">অতল</span><span>Atala, realm 1 of 7</span></span></div>
+    <h2 class="h2 gap fade d1">Every record goes one level further down</h2>
+    <div class="rels" id="rels">
+      <!-- build:releases -->
+    </div>
+  </section>
+  <!-- endif:releases -->
+
+  <!-- if:onRepeat -->
+  <section class="sect" id="s02">
+    <div class="head fade"><span class="ix" lang="bn">২</span><span class="ti">On repeat</span><span class="ex"><span lang="bn">বিতল</span><span>Vitala, realm 2 of 7</span></span></div>
+    <div class="rot">
+      <div>
+        <h2 class="h2 gap fade d1">Not mine. What plays on the way down.</h2>
+        <div class="rotlist" id="rotlist">
+        <!-- build:onRepeat -->
+        </div>
+        <!-- if:redraw -->
+        <div class="srcline fade">
+          <button class="redraw" type="button" id="redraw">Draw six more</button>
+          <span>Six pulled at random</span>
+        </div>
+        <!-- endif:redraw -->
+      </div>
+      <div>
+        <div class="crate" id="crate" aria-hidden="true"><div class="crate-base"></div></div>
+        <div class="crate-cap"><span id="crateA">Hover a row</span><b id="crateB"></b></div>
+      </div>
+    </div>
+  </section>
+  <!-- endif:onRepeat -->
+
+  <div class="band" id="band">
+    <p class="band-realm fade"><span class="ix" lang="bn">৩</span><span lang="bn">সুতল</span><span>Sutala, realm 3 of 7</span></p>
+    <div class="band-in">
+      <p class="band-q fade">Seven realms lie under the earth. This is the sound from the last one.</p>
+      <p class="band-m fade d1"><b data-count="7" data-pad="2">07</b>realms down to Pataal</p>
+    </div>
+  </div>
+
+  <!-- if:collaborators -->
+  <section class="sect blood" id="s03">
+    <div class="head fade"><span class="ix" lang="bn">৪</span><span class="ti">Collaborators</span><span class="ex"><span lang="bn">তলাতল</span><span>Talatala, realm 4 of 7</span></span></div>
+    <h2 class="h2 gap fade d1">Nobody makes the trip alone</h2>
+    <div class="collabs" id="collabs">
+      <!-- build:collaborators -->
+    </div>
+  </section>
+  <!-- endif:collaborators -->
+
+  <section class="sect blood flush" id="s04">
+    <div class="head fade"><span class="ix" lang="bn">৫</span><span class="ti">About</span><span class="ex"><span lang="bn">মহাতল</span><span>Mahatala, realm 5 of 7</span></span></div>
+    <div class="studio">
+      <div class="portrait fade">
+        <canvas id="portrait" width="620" height="775" role="img" aria-label="Drawn figure standing in for the artist's portrait"></canvas>
+        <img id="portraitImg" alt="Pataal Yatri" hidden>
+        <div class="portrait-cap"><span>Pataal Yatri</span><span lang="bn">পাতাল যাত্রী</span></div>
+      </div>
+      <div class="bio">
+        <h2 class="h2 fade d1">One way down, and no clean version</h2>
+        <p class="lead fade d2">Pataal Yatri (<span lang="bn">পাতাল যাত্রী</span>) is Bengali for the one who travels the underworld. The name is the method.</p>
+        <p class="fade d2">The work starts where the lamps of a Bengali evening stop reaching: the burning ground, the blood-red hibiscus, the stories told to keep children indoors after dark. <strong>None of it is softened, translated or tidied.</strong> If a take sounds unhinged, that is the take.</p>
+        <p class="fade d3">Underneath it is an older idea: every civilization is built on top of the one it buried. The records dig.</p>
+        <dl class="facts fade d3">
+          <div><dt>Releases</dt><!-- build:factReleases --></div>
+          <div><dt>Collaborators</dt><!-- build:factCollaborators --></div>
+          <div><dt>Realms</dt><dd data-count="7" data-pad="2">07</dd></div>
+          <div><dt>Filters</dt><dd>00</dd></div>
+        </dl>
+        <ul class="kit fade d4" aria-label="What the records are made of">
+          <li>Flame</li><li>Blood</li><li>The dead</li><li>Power</li><li>Hell</li><li>Civilization</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect" id="s05">
+    <div class="head fade"><span class="ix" lang="bn">৬</span><span class="ti">Contact</span><span class="ex"><span lang="bn">রসাতল</span><span>Rasatala, realm 6 of 7</span></span></div>
+    <div class="ct">
+      <div>
+        <h2 class="h2 fade d1">Bookings, features and press</h2>
+        <p class="ct-lede fade d2">Say who you are and what you want. Rough demos and voice notes are welcome. Nothing has to be polished.</p>
+        <ul class="lines fade d3" id="lines">
+          <!-- build:lines -->
+        </ul>
+      </div>
+      <form class="fade d2" id="form" novalidate>
+        <label class="f"><span>Name</span><input type="text" name="name" autocomplete="name" required></label>
+        <label class="f"><span>Email</span><input type="email" name="email" autocomplete="email" required></label>
+        <label class="f"><span>What it is about</span>
+          <select name="type"><option>Booking or live</option><option>Feature or collaboration</option><option>Press</option><option>Something else</option></select>
+        </label>
+        <label class="f"><span>Message</span><textarea name="msg"></textarea></label>
+        <button class="btn solid send" type="submit"><i></i><span>Open email draft</span></button>
+        <p class="note" id="note" role="status">This opens your mail app with the message filled in. Nothing is stored on this site.</p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="foot" id="foot">
+    <div class="head fade"><span class="ix" lang="bn">৭</span><span class="ti">The bottom</span><span class="ex"><span lang="bn">পাতাল</span><span>Patala, realm 7 of 7</span></span></div>
+    <p class="foot-word" lang="bn" aria-hidden="true">পাতাল যাত্রী</p>
+    <div class="foot-row">
+      <span>&copy; <span id="year"><!-- build:year --></span> Pataal Yatri</span>
+      <span>Unfiltered, unhinged and authentic</span>
+      <a href="#s00">Back to the surface ↑</a>
+    </div>
+  </footer>
+</main>
+
+<!-- build:data -->
+<script src="assets/js/site.js"></script>
+</body>
+</html>
