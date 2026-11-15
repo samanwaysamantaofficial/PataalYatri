@@ -29,6 +29,13 @@
   src:url("../fonts/anek-bangla-latin.woff2") format("woff2");
   unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
+/* Anek's Devanagari cut, cut down to the letters of पाताल यात्री (the hero's Hindi name).
+   Other Devanagari text falls through to the system font. */
+@font-face{
+  font-family:"Anek Devanagari";font-style:normal;font-weight:100 800;font-stretch:75% 125%;font-display:swap;
+  src:url("../fonts/anek-devanagari-name.woff2") format("woff2");
+  unicode-range:U+0924,U+092A,U+092F-0930,U+0932,U+093E,U+0940,U+094D;
+}
 
 :root{
   --night:#0B0605;
@@ -51,7 +58,7 @@
 
   /* one family, three voices: pressed narrow for display, normal for reading,
      pushed wide for labels. It draws Bengali and Latin as the same design. */
-  --face:"Anek Bangla","Nirmala UI","Noto Sans Bengali","Helvetica Neue",Arial,sans-serif;
+  --face:"Anek Bangla","Anek Devanagari","Nirmala UI","Noto Sans Bengali","Helvetica Neue",Arial,sans-serif;
 
   --pad:clamp(20px,5vw,88px);
   --bar:60px;
@@ -225,14 +232,17 @@ main{overflow-x:clip;}
 
 /* ---------- hero ---------- */
 .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;gap:clamp(26px,4vh,52px);padding-top:calc(var(--bar) + clamp(30px,7vh,80px));padding-bottom:clamp(48px,7vh,90px);}
-.hero-bn{
+.hero-bn,.hero-hi{
   margin:0 0 clamp(2px,.6vh,8px);color:var(--flame);
-  font-stretch:82%;font-weight:700;font-size:clamp(1.9rem,min(8vw,7.4vh),3.6rem);line-height:1.25;word-spacing:.14em;
+  font-stretch:82%;font-weight:700;font-size:clamp(1.9rem,min(8vw,6.4vh),3.6rem);line-height:1.25;word-spacing:.14em;
 }
+/* the Hindi name mirrors the Bengali: one above the English, one below.
+   Both scripts and the name are sized by height so the hero buttons stay above the fold. */
+.hero-hi{margin:clamp(8px,1.4vh,16px) 0 0;}
 .name{
   will-change:transform,opacity;transform-origin:0% 50%;
   font-stretch:75%;font-weight:800;text-transform:uppercase;
-  font-size:clamp(4.2rem,min(33vw,23.5vh),16.5rem);line-height:.8;letter-spacing:-.012em;margin:0;white-space:nowrap;
+  font-size:clamp(4.2rem,min(33vw,21vh),16.5rem);line-height:.8;letter-spacing:-.012em;margin:0;white-space:nowrap;
 }
 .name .rv{padding-top:.045em;}
 /* one column below 880px, so the name gives back some height to keep the buttons in view */

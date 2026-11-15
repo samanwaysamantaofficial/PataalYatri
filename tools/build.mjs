@@ -25,6 +25,9 @@ export const PATHS = {
   cache: join(ROOT, ".cache")
 };
 
+const SITE = "https://pataalyatri.com/";   // the live address: canonical, sitemap and structured data
+/* other ways people write the name; told to search engines so all of them find the site */
+const ALSO_KNOWN_AS = ["পাতাল যাত্রী", "पाताल यात्री", "Patal Jatri", "Patal Yatri"];
 const IMAGE = new Set([".jpg", ".jpeg", ".png", ".webp", ".avif", ".gif"]);
 const SMALL_EDGE = 800;                    // longest side of a tunnel copy, px
 const HEAVY = 1.5 * 1024 * 1024;           // originals above this get a warning when they cannot be shrunk
@@ -320,6 +323,31 @@ function renderLines(contact) {
   return rows.join("\n          ");
 }
 
+/* schema.org data: tells search engines this site is the official home of the artist
+   "Pataal Yatri", and which profiles elsewhere (Spotify, Instagram ...) are the same artist */
+function renderStructuredData(contact, hasShare) {
+  const profiles = contact.links.map((l) => l.url).filter(Boolean);
+  const artist = {
+    "@type": "MusicGroup",
+    "@id": SITE + "#artist",
+    name: "Pataal Yatri",
+    alternateName: ALSO_KNOWN_AS,
+    url: SITE,
+    description: "Pataal Yatri (পাতাল যাত্রী), the one who travels the underworld. Down, in search of the root.",
+    foundingLocation: { "@type": "Place", name: "Bengal" }
+  };
+  if (hasShare) artist.image = SITE + "assets/icons/share.jpg";
+  if (profiles.length) artist.sameAs = profiles;
+  const graph = {
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "WebSite", "@id": SITE + "#website", url: SITE, name: "Pataal Yatri", alternateName: ALSO_KNOWN_AS, inLanguage: "en", about: { "@id": SITE + "#artist" } },
+      artist
+    ]
+  };
+  return `<script type="application/ld+json">${JSON.stringify(graph).replace(/</g, "\\u003c")}</script>`;
+}
+
 /* <!-- if:name --> ... <!-- endif:name --> keeps or drops a block;
    <!-- build:name --> is replaced with generated HTML */
 function fill(template, flags, parts) {
@@ -378,14 +406,16 @@ export async function build() {
     onRepeat: onRepeat.map((t) => ({ artist: t.artist, title: t.title, length: t.length, spotify: t.spotify, cover: t.cover }))
   };
 
+  const hasShare = await stat(join(PATHS.src, "assets", "icons", "share.jpg")).then(() => true, () => false);
   const html = fill(await readFile(template, "utf8"), {
     releases: releases.length > 0,
     latest: releases.length > 0,
     collaborators: collaborators.length > 0,
     onRepeat: onRepeat.length > 0,
     redraw: onRepeat.length > 6,
-    share: await stat(join(PATHS.src, "assets", "icons", "share.jpg")).then(() => true, () => false)
+    share: hasShare
   }, {
+    ldjson: renderStructuredData(contact, hasShare),
     latest: latest ? h(latest.title) + (latest.type || latest.year ? ` (${h([latest.type, latest.year].filter(Boolean).join(", "))})` : "") : "",
     releases: releases.map(renderRelease).join("\n      "),
     collaborators: collaborators.map(renderCollaborator).join("\n      "),
@@ -397,6 +427,10 @@ export async function build() {
     data: `<script id="py-data" type="application/json">${JSON.stringify(data).replace(/</g, "\\u003c")}</script>`
   });
   await writeFile(join(PATHS.dist, "index.html"), html);
+
+  /* one page, so one entry; lastmod tells crawlers when to come back */
+  await writeFile(join(PATHS.dist, "sitemap.xml"),
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${SITE}</loc><lastmod>${new Date().toISOString().slice(0, 10)}</lastmod></url>\n</urlset>\n`);
 
   const n = (k, w) => `${k} ${w}${k === 1 ? "" : "s"}`;
   log.summary = [
