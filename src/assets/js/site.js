@@ -326,7 +326,8 @@ function nextArt(){
     var arrived=function(){typeIn=true;};
     Promise.all([
       document.fonts.load('1em "Anek Bangla"',"Pataal Yatri"),
-      document.fonts.load('1em "Anek Bangla"',"পাতাল যাত্রী")
+      document.fonts.load('1em "Anek Bangla"',"পাতাল যাত্রী"),
+      document.fonts.load('1em "Anek Devanagari"',"पाताल यात्री")
     ]).then(arrived,arrived);
     setTimeout(arrived,2800);
   }
@@ -507,7 +508,7 @@ function nextArt(){
    ========================================================= */
 (function(){
   if(RM)return;
-  var name=$("#name"),heroBn=$(".hero-bn"),slogan=$("#slogan"),heroFoot=$(".hero-foot"),
+  var name=$("#name"),heroBn=$(".hero-bn"),heroHi=$(".hero-hi"),slogan=$("#slogan"),heroFoot=$(".hero-foot"),
       crate=$("#crate"),bandQ=$(".band-q"),bandM=$(".band-m"),
       heads=$$(".head"),hero=$("#s00");
   var vh=innerHeight,heroH=hero?hero.offsetHeight:vh,geo=[],split=22;
@@ -551,6 +552,10 @@ function nextArt(){
         heroBn.style.transform="translateY("+(-hp*90).toFixed(1)+"px)";
         heroBn.style.opacity=String(clamp(1-hp*1.6,0,1));
       }
+      if(heroHi){
+        heroHi.style.transform="translateY("+(-hp*58).toFixed(1)+"px)";
+        heroHi.style.opacity=String(clamp(1-hp*1.55,0,1));
+      }
       if(slogan){
         slogan.style.transform="translateY("+(-hp*44).toFixed(1)+"px)";
         slogan.style.opacity=String(clamp(1-hp*1.5,0,1));
@@ -580,7 +585,7 @@ function nextArt(){
   document.addEventListener("py:ready",function(){
     measure();
     /* once the entrance has played, the hero follows the scroll directly */
-    setTimeout(function(){[heroBn,slogan].forEach(function(e){if(e)e.style.transition="none";});},1400);
+    setTimeout(function(){[heroBn,heroHi,slogan].forEach(function(e){if(e)e.style.transition="none";});},1400);
     requestAnimationFrame(tick);
   },{once:true});
 })();
