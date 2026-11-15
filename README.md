@@ -121,15 +121,11 @@ No `CNAME` file is needed in the repository; with the GitHub Actions source the 
 
 Every path in the site is relative, so it works the same at the custom domain and at the temporary `github.io/PataalYatri/` address. The one exception is `404.html`, which assumes the site sits at the root of its domain.
 
-When the domain is settled, add these to the `<head>` of `src/index.html`:
+The main address is `https://pataalyatri.com/`. The `<head>` of `src/index.html` names it as the canonical address (`canonical` and `og:url`), so search engines credit everything to it. `pataalyatri.in` is forwarded there by GoDaddy and is not set up in GitHub at all. If the main address ever changes, update those lines.
 
-```html
-<link rel="canonical" href="https://YOUR-DOMAIN/">
-<meta property="og:url" content="https://YOUR-DOMAIN/">
-<meta property="og:image" content="https://YOUR-DOMAIN/assets/icons/share.jpg">
-```
+### The share picture
 
-`share.jpg` is the picture shown when the link is posted on social media or in a chat: a 1200 x 630 image you add to `src/assets/icons/`.
+The picture shown when the link is posted on social media or in a chat is `src/assets/icons/share.jpg`: a 1200 x 630 JPG you make. Once that file exists, the build adds the `og:image` tags for it; until then the link is shared without a picture. Chat apps keep a preview for a while, so a changed picture can take days to show up where the link was already posted.
 
 ## Fonts
 

@@ -383,7 +383,8 @@ export async function build() {
     latest: releases.length > 0,
     collaborators: collaborators.length > 0,
     onRepeat: onRepeat.length > 0,
-    redraw: onRepeat.length > 6
+    redraw: onRepeat.length > 6,
+    share: await stat(join(PATHS.src, "assets", "icons", "share.jpg")).then(() => true, () => false)
   }, {
     latest: latest ? h(latest.title) + (latest.type || latest.year ? ` (${h([latest.type, latest.year].filter(Boolean).join(", "))})` : "") : "",
     releases: releases.map(renderRelease).join("\n      "),
